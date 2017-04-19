@@ -185,7 +185,7 @@ header {
     }
 
     .btn-linkedin {
-      background-image: url("../images/btn-linkedin.png");
+      background-image: url("../images/btn-linkedin-lg.png");
       background-repeat: no-repeat;
       background-size: contain;
       background-color: #61acc6;
@@ -196,7 +196,12 @@ header {
       text-indent: -9999px;
       position: relative;
       top: -5px;
+
+      &:hover {
+        background-color: #61acc6;
+      }
       @include respond-to('medium-landscape') {
+        background-image: url("../images/btn-linkedin.png");
         margin-left: 25px;
         width: 126px;
         padding: 0;
