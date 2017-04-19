@@ -1,0 +1,46 @@
+.clients {
+  background-color: #fff;
+  .wrapper {
+    overflow: hidden;
+    padding: 20px 10px;
+    @include respond-to('medium-landscape-xl') {
+      width: 80vw;
+      max-width: 1140px;
+    }
+    @include respond-to('medium') {
+      margin: auto;
+    }
+  }
+
+  h2 {
+    color: #000;
+    font-weight: normal;
+    padding: 40px 0;
+    font-size: 22px;
+    text-align: center;
+    @include respond-to('medium') {
+      padding: 0;
+      margin: 0  0 20px 0;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    @include respond-to('medium') {
+      text-align: left;
+      float: left;
+      width: calc(33.33%);
+    }
+    li {
+      color: #636363;
+      font-size: 18px;
+      margin-bottom: 5px;
+      list-style: none;
+      position: relative;
+      position: relative;
+    }
+  }
+}

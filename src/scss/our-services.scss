@@ -1,0 +1,118 @@
+.our-services {
+  background-color: #748389;
+  text-align: center;
+  .wrapper {
+    @include respond-to('medium-landscape-xl') {
+      width: 80vw;
+      max-width: 1140px;
+    }
+    @include respond-to('medium') {
+      padding: 20px 0;
+      margin: auto;
+    }
+  }
+
+  h2 {
+    color: #fff;
+    font-weight: normal;
+    padding: 40px 0;
+    font-size: 22px;
+    @include respond-to('medium') {
+      padding: 0;
+      margin: 0  0 20px 0;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    li {
+      list-style: none;
+      position: relative;
+      background-color: #fff;
+      cursor: pointer;
+      padding-bottom: 60px;
+
+      @include respond-to('medium') {
+        float: left;
+        width: calc(33.33%);
+        padding-bottom: 50px;
+      }
+
+      @include respond-to('medium-landscape') {
+        padding-bottom: 60px;
+      }
+      img {
+        width: 100%;
+      }
+
+      &:hover .info {
+        .non-touch-device & {
+          top: 4px;
+        }
+      }
+
+      &.active .info {
+        top: 4px;
+      }
+
+      .info {
+        transition: all 400ms ease;
+        background-color: rgba(255,255,255, 1);
+        padding: 10px 20px;
+        text-align: left;
+        margin-top: -4px;
+        position: absolute;
+        top: calc(100% - 60px);
+        bottom: 0;
+
+        @include respond-to('medium') {
+          top: calc(100% - 50px);
+        }
+        @include respond-to('medium-landscape') {
+          top: calc(100% - 60px);
+        }
+
+        .content {
+          background-color: #fff;
+          margin-top: 10px;
+          height: 294px;
+
+          p {
+            color: #000;
+            opacity: .5;
+            white-space: normal;
+            font-size: 16px;
+
+            @include respond-to('medium') {
+              font-size: 12px;
+            }
+            @include respond-to('medium-landscape') {
+              font-size: 16px;
+            }
+          }
+        }
+        p {
+          margin: 0;
+          font-size: 18px;
+          white-space: nowrap;
+          opacity: .7;
+
+          @include respond-to('medium') {
+            font-size: 15px;
+          }
+          @include respond-to('medium-landscape') {
+            font-size: 18px;
+          }
+
+          &:nth-child(2) {
+            color: #000;
+            opacity: .5;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
+}

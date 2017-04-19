@@ -1,0 +1,127 @@
+.about-us {
+  background-color: #ebebeb;
+  text-align: center;
+  .wrapper {
+    @include respond-to('medium-landscape-xl') {
+      width: 80vw;
+      max-width: 1140px;
+    }
+    @include respond-to('medium') {
+      padding: 20px 0;
+      margin: auto;
+    }
+  }
+
+  h2 {
+    color: #14a5c9;
+    font-weight: normal;
+    padding: 40px 0;
+    font-size: 22px;
+    @include respond-to('medium') {
+      padding: 0;
+      margin: 0  0 20px 0;
+    }
+  }
+
+  .disclaimer {
+    background-color: #757575;
+    margin: 0;
+    padding: 19px;
+    color: #dcdcdc;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    li {
+      list-style: none;
+      position: relative;
+      background-color: #fff;
+      cursor: pointer;
+      margin-bottom: -3px;
+      @include respond-to('medium') {
+        float: left;
+        width: calc(33.33%);
+        // height: 346px;
+      }
+      img {
+        width: 100%;
+      }
+
+      &:hover .info {
+        .non-touch-device & {
+          top: 4px;
+          background-color: rgba(255,255,255, 1);
+        }
+      }
+
+      &.active .info {
+        top: 4px;
+        background-color: rgba(255,255,255, 1);
+      }
+
+      .info {
+        transition: all 400ms ease;
+        background-color: rgba(255,255,255, .5);
+        padding: 0 20px 20px;
+        text-align: left;
+        margin-top: -4px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: calc(100% - 45px);
+        @include respond-to('medium') {
+          top: calc(100% - 37px);
+        }
+
+        @include respond-to('medium-landscape') {
+          top: calc(100% - 45px);
+        }
+        // @include respond-to('medium') {
+        //   top: 302px;
+        // }
+
+        h5 {
+          margin: 0;
+          font-size: 18px;
+          opacity: .7;
+          padding: 14px 0;
+          @include respond-to('small') {
+            font-size: 15px;
+          }
+          @include respond-to('medium') {
+            font-size: 17px;
+            padding: 10px 0;
+          }
+
+          @include respond-to('medium-landscape') {
+            padding: 14px 0;
+          }
+        }
+
+        .content {
+          margin-top: 0;
+          height: 294px;
+
+          p {
+            color: #000;
+            white-space: normal;
+            margin: 0;
+            font-size: 13px;
+            opacity: .5;
+
+            @include respond-to('small') {
+              font-size: 11px;
+            }
+            @include respond-to('medium-landscape') {
+              font-size: 14px;
+              // margin: 5px 0 0 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

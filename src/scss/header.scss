@@ -1,0 +1,206 @@
+.slide-menu-active {
+  overflow: hidden;
+
+  .slide-menu {
+    span {
+      &:nth-child(1) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+      }
+      &:nth-child(2) {
+        transform: rotate(45deg);
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+      &:nth-child(4) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+      }
+    }
+  }
+
+  .main-nav {
+    overflow: auto;
+  }
+}
+
+header {
+  background-color: #fff;
+  padding: 10px 10px 30px;
+  overflow: hidden;
+
+	@include respond-to('medium-landscape') {
+		position: relative;
+	}
+  .logo {
+    float: left;
+    background-image: url("../images/logo-alselec.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 237px;
+    height: 63px;
+    text-indent: -9999px;
+    @include respond-to('medium') {
+      margin-top: 20px;
+      margin-left: 55px;
+    }
+  }
+
+  a.slide-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+
+    @include respond-to('medium') {
+      top: 35px;
+      right: 35px;
+    }
+    @include respond-to('medium-landscape') {
+      display: none;
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      height: 5px;
+      width: 100%;
+      background: #000;
+      border-radius: 9px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0px;
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        top: 10px;
+      }
+
+      &:nth-child(4) {
+        top: 20px;
+      }
+    }
+  }
+
+  .main-nav {
+    transition: bottom 1s;
+    position: absolute;
+    bottom: 100%;
+    top: 100px;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 99;
+    overflow: hidden;
+    @include respond-to('medium') {
+      top: 120px;
+    }
+    @include respond-to('medium-landscape') {
+			display: inline-block;
+			position: static;
+      float: right;
+      margin-right: 65px;
+      margin-top: 64px;
+    }
+
+    .slide-menu-active & {
+      bottom: 0;
+    }
+
+    a {
+      color: #000;
+      text-transform: uppercase;
+      font-size: 13px;
+      display: block;
+      border-top: solid 1px #000;
+      padding: 20px;
+      @include respond-to('medium-landscape') {
+        padding: 5.5px 10px;
+        display: inline-block;
+        border: none;
+      }
+      &:last-child {
+        border-bottom: solid 1px #000;
+        @include respond-to('medium-landscape') {
+          border: none;
+        }
+      }
+      &:hover {
+        background-color: #f8c853;
+
+      }
+    }
+  }
+
+  .top-nav {
+    @include respond-to('medium-landscape') {
+      position: absolute;
+      right: 75px;
+      top: 20px;
+    }
+    a {
+      text-transform: uppercase;
+      font-size: 13px;
+      background-color: #f5f5f5;
+      @include respond-to('medium-landscape') {
+        margin-left: 12px;
+        padding: 4px 20px;
+      }
+    }
+
+    .btn-download {
+      position: relative;
+      padding: 20px;
+      @include respond-to('medium-landscape') {
+        padding: 4px 33px 4px 20px;
+      }
+      &:after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        right: 18px;
+        top: 15px;
+        background-image: url('../images/download-icon.png');
+        width: 18px;
+        height: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        @include respond-to('medium-landscape') {
+          top: 6px;
+          width: 9px;
+          height: 11px;
+        }
+      }
+    }
+
+    .btn-linkedin {
+      background-image: url("../images/btn-linkedin.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #61acc6;
+      width: 100%;
+      height: 23px;
+      padding: 15px;
+      display: inline-block;
+      text-indent: -9999px;
+      position: relative;
+      top: -5px;
+      @include respond-to('medium-landscape') {
+        margin-left: 25px;
+        width: 126px;
+        padding: 0;
+      }
+    }
+  }
+}
