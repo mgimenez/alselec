@@ -7,10 +7,13 @@ div.contact-container
       p (1824) - Lanús Bs As - Argentina
       p Tel/Fax: +54115263-3091
     form.right-panel
-      label Nombre
+      label
+        span Nombre
         input(type="text" name="nombre")
-      label Email
-       input(type="email" name="nombre")
-      label Mensaje
-       textarea(name="mensaje")
+      label
+        span Email
+        input(type="email" name="nombre")
+      label.msg
+        span Mensaje
+        textarea(name="mensaje")
       input(type="submit", value="Enviar")

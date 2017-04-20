@@ -1,14 +1,70 @@
 .contact-container {
   max-width: 1200px;
   margin: auto;
-
+  h2 {
+    text-transform: uppercase;
+    color: $cian;
+    text-align: center;
+    margin-bottom: 35px;
+  }
   .form-container {
     overflow: hidden;
+    margin-bottom: 35px;
+    background-color: #efefef;
+    // max-width: 1200px;
   }
   .left-panel {
     float: left;
+    background-color: #efefef;
+    width: calc(50% - 30px);
+    padding: 30px 0 0 30px;
+
+    h5 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 19px;
+      font-weight: 100;
+    }
   }
   .right-panel {
     float: left;
+    background-color: #808a8c;
+    width: calc(50% - 30px);
+    padding: 30px 0 0 30px;
+
+    label {
+      display: block;
+      margin: 10px;
+
+      span {
+        display: inline-block;
+        width: 100px;
+        color: #c0c5c6;
+      }
+
+      &.msg {
+        span {
+          vertical-align: top;
+        }
+      }
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      display: inline-block;
+      border: solid 1px #c0c5c6;
+      background-color: #808a8c;
+      width: 380px;
+      height: 30px;
+    }
+
+    textarea {
+      height: 130px;
+    }
   }
 }
