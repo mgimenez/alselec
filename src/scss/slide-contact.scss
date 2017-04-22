@@ -1,5 +1,14 @@
 .slide-contact {
   img {
-    width: 100%;
+    height: 300px;
+    position: relative;
+    transform: translateX(-50%);
+    right: -50%;
+    @include respond-to('small') {
+      width: 100%;
+      position: static;
+      transform: none;
+      height: auto;
+    }
   }
 }
