@@ -114,11 +114,65 @@ header {
       margin-top: 64px;
     }
 
+    .cert {
+      position: relative;
+      &:before {
+        content: '';
+        border: 1px solid #000;
+        border-width: 0 0 2px 2px;
+        width: 10px;
+        height: 10px;
+        line-height: 0;
+        font-size: 0;
+        transform: rotate(225deg);
+        position: absolute;
+        right: 25px;
+        top: 20px;
+        transition: transform .3s ease-out;
+        @include respond-to('medium') {
+          display: none;
+        }
+      }
+      &:hover {
+
+        &:before {
+          transform: rotate(315deg);
+        }
+
+        & + .sub-menu {
+          display: block;
+        }
+      }
+    }
+
     .slide-menu-active & {
       bottom: 0;
     }
 
-    a {
+    .sub-menu {
+      display: none;
+      @include respond-to('medium') {
+        right: 75px;
+        position: absolute;
+      }
+
+      &:hover {
+        display: block;
+      }
+
+      a {
+        padding-left: 40px;
+        @include respond-to('medium') {
+          padding: 5.5px 10px;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+    a,
+    .cert {
       color: #000;
       text-transform: uppercase;
       font-size: 13px;
