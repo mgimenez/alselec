@@ -129,11 +129,12 @@ header {
         right: 25px;
         top: 20px;
         transition: transform .3s ease-out;
-        @include respond-to('medium') {
+        @include respond-to('medium-landscape') {
           display: none;
         }
       }
-      &:hover {
+      .non-touch-device &:hover,
+      &.active {
 
         &:before {
           transform: rotate(315deg);
@@ -151,18 +152,19 @@ header {
 
     .sub-menu {
       display: none;
-      @include respond-to('medium') {
+      @include respond-to('medium-landscape') {
         right: 75px;
         position: absolute;
       }
 
-      &:hover {
+      .non-touch-device &:hover,
+      &.active {
         display: block;
       }
 
       a {
         padding-left: 40px;
-        @include respond-to('medium') {
+        @include respond-to('medium-landscape') {
           padding: 5.5px 10px;
         }
 
@@ -190,7 +192,8 @@ header {
           border: none;
         }
       }
-      &:hover {
+      .non-touch-device &:hover,
+      &.active {
         background-color: #f8c853;
 
       }

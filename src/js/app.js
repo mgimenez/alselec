@@ -32,6 +32,16 @@
 
 				$('body').animate({scrollTop: $('.our-products').offset().top + 10}, 400);
 			});
+
+			if (touchDetect.isTouchDevice()) {
+
+				$('.js-cert').on('touchtap', function(e) {
+					$(this).toggleClass('active');
+					$('.sub-menu').toggleClass('active');
+				});
+
+			}
+
 		}
 
 	},
