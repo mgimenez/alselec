@@ -66,6 +66,13 @@ gulp.task('copyVendor', function() {
     .pipe(gulp.dest(path.dist + '/vendor'));
 });
 
+// Copy PHP Files
+gulp.task('copyPHP', function() {
+  gulp.src(path.src + '/php/**/*')
+    .pipe(copy())
+    .pipe(gulp.dest(path.dist + '/php'));
+});
+
 gulp.task('imagemin', function() {
     gulp.src(path.src + '/images/**/*')
         .pipe(imagemin({
@@ -171,26 +178,26 @@ gulp.task('clean', function () {
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: "./dist"            
+            baseDir: "./dist"
         },
         notify: false
     });
 });
 
 gulp.task('dist', function() {
-  runSequence('clean', 'sass', 'hintJs', 'copyJs', 'copyVendor', 'pugTemplates', 'pug','imagemin', function() {
+  runSequence('clean', 'sass', 'hintJs', 'copyJs', 'copyVendor', 'copyPHP', 'pugTemplates', 'pug','imagemin', function() {
     console.log(color('SUCCESSFULLY DIST!', 'YELLOW'));
   });
 });
 
 gulp.task('dev', function(callback) {
-  runSequence('clean', 'sass', 'hintJs', 'copyJs', 'copyVendor', 'pugTemplates', 'pug', 'imagemin', 'watch', 'browser-sync', function() {
+  runSequence('clean', 'sass', 'hintJs', 'copyJs', 'copyVendor', 'copyPHP', 'pugTemplates', 'pug', 'imagemin', 'watch', 'browser-sync', function() {
     console.log(color('HAPPY DEV!', 'BLUE'));
   });
 });
 
 gulp.task('build', function(callback) {
-  runSequence('clean', 'sass', 'hintJs', 'pugTemplates', 'pug', 'concatJs', 'uglifyJs', 'imagemin', 'mergeScript', function() {
+  runSequence('clean', 'sass', 'hintJs', 'pugTemplates', 'pug', 'copyPHP', 'concatJs', 'uglifyJs', 'imagemin', 'mergeScript', 'copyVendor', function() {
     console.log(color('SUCCESSFULLY BUILD!', 'YELLOW'));
   });
 });

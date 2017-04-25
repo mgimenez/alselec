@@ -14,6 +14,8 @@
 			slider.init();
 			touchDetect.init();
 			uncover.init();
+			contact.init();
+			ga.init();
 		}
 
 	},
@@ -29,7 +31,7 @@
 				e.preventDefault();
 
 				$('body').animate({scrollTop: $('.our-products').offset().top + 10}, 400);
-			})
+			});
 		}
 
 	},
@@ -46,6 +48,113 @@
 
 	},
 
+	contact = {
+
+		init: function() {
+
+				$('.submit').on('click', function (e) {
+          e.preventDefault();
+  				//Get the data from all the fields
+  				var name = $('input[name=name]'),
+  						email = $('input[name=email]'),
+  						comment = $('textarea[name=comment]');
+
+  				if (validations()) {
+            $('.loading').show();
+
+    				//organize the data properly
+    				var data = 'name=' + name.val() + '&email=' + email.val() + '&comment='  + encodeURIComponent(comment.val());
+
+    				//start the ajax
+    				$.ajax({
+    					url: "php/process.php",
+    					type: "GET",
+    					data: data,
+    					cache: false,
+    					success: function (html) {
+    						//if process.php returned 1/true (send mail success)
+    						if (html==1) {
+    							// $('.form-container .fields-container').css('visibility', 'hidden');
+    							$('.done').fadeIn('slow');
+    							$('.loading').fadeOut('slow');
+                  window.setTimeout(function() {
+                    $('.done').fadeOut('slow');
+                    name.val('');
+                    email.val('');
+                    comment.val('');
+                  }, 5000);
+
+    						//if process.php returned 0/false (send mail failed)
+    						} else {
+    							window.alert('Perdón, hubo un error. Por favor, vuelva a intentar.');
+    						}
+    					}
+    				});
+    					//cancel the submit button default behaviours
+    					return false;
+            }
+				});
+
+        $('input[name="name"]').on('keyup', function () {
+          if ($(this).hasClass('hightlight')) {
+            validateField($(this));
+          }
+        });
+
+        $('input[name="email"]').on('keyup', function () {
+          if ($(this).hasClass('hightlight')) {
+            validateEmail($(this));
+          }
+        });
+
+        $('textarea[name="comment"]').on('keyup', function () {
+          if ($(this).hasClass('hightlight')) {
+            validateField($(this));
+          }
+        });
+
+        function validations() {
+          var name = $('input[name=name]'),
+  						email = $('input[name=email]'),
+  						comment = $('textarea[name=comment]');
+
+          validateField(name);
+          validateEmail(email);
+          validateField(comment);
+
+          if (validateField(name) && validateEmail(email) && validateField(comment)) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+				function validateField(field) {
+					if (field.val()=== '') {
+						field.addClass('hightlight');
+						return false;
+					} else {
+						field.removeClass('hightlight');
+            return true;
+					}
+				}
+
+				function validateEmail(field) {
+          // console.log('a');
+				    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				    if(!re.test(field.val())) {
+							field.addClass('hightlight');
+							return false;
+						} else {
+							field.removeClass('hightlight');
+              return true;
+						}
+				}
+
+		}
+
+	},
+
 	touchDetect = {
 
 		init: function() {
@@ -57,7 +166,7 @@
 		},
 
 		isTouchDevice: function() {
-			return (!!('ontouchstart' in window))
+			return (!!('ontouchstart' in window));
 		},
 
 		setTouchDevice: function() {
@@ -88,13 +197,25 @@
 						if ($(e.target).parents('.js-uncover').length > 0) {
 							$(e.target).parents('.js-uncover').addClass('active');
 						}
-					})
+					});
 
 				}
 		}
 
-	};
+	},
+
+  ga = {
+
+    init: function() {
+      /*/GA tracking pdfs /*/
+      $('.btn-download, .btn-linkedin, .cert').on('click',function(){
+      	var url = $(this).attr('href');
+      	ga('send', 'event', 'button', 'click', {'page': '/'+url});
+      });
+    }
+
+  };
 
 
 
-}(window, window.document, jQuery));
+}(window, window.document, window.jQuery));

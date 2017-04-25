@@ -10,11 +10,15 @@ div.contact-container
       div.fields-container
         label
           span Nombre
-          input(type="text" name="nombre")
+          input(type="text" name="name")
         label
           span Email
-          input(type="email" name="nombre")
+          input(type="email" name="email")
         label.msg
           span Mensaje
-          textarea(name="mensaje")
-        input(type="submit", value="Enviar")
+          textarea(name="comment")
+        input.submit(type="submit", value="Enviar")
+        div.loading
+      div.done(style="display:none")
+        strong ¡Gracias! 
+        | Hemos recibido su mensaje.

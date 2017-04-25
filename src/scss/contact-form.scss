@@ -42,6 +42,20 @@
     background-color: #808a8c;
     width: 100%;
     padding: 30px 10px 30px 10px;
+    .done {
+      margin-top: 15px;
+      margin-left: 10px;
+      color: #fff;
+    }
+    .loading {
+    	float:right;
+    	background:url('../images/ajax-loader.gif') no-repeat 1px;
+    	height:28px;
+    	width:28px;
+    	display:none;
+      background-size: contain;
+      margin-right: 10px;
+    }
 
     @include respond-to('medium-landscape') {
       float: right;
@@ -60,10 +74,6 @@
         color: #fff;
         font-weight: 100;
         margin-bottom: 10px;
-        // @include respond-to('medium-landscape') {
-          // margin-bottom: 0;
-        // }
-
       }
 
       &.msg {
@@ -82,18 +92,24 @@
         width: 510px
       }
     }
+
+    input.hightlight,
+    textarea.hightlight {
+      border-color: red!important;
+    }
+
     input[type="submit"] {
       float: right;
-      margin-right: 5px;
+      // margin-right: 5px;
       border: none;
       color: #808a8c;
       background-color: #fff;
       padding: 8px 30px;
       font-size: 10px;
       text-transform: uppercase;
-      @include respond-to('medium-landscape') {
-        margin-right: 10px;
-      }
+      // @include respond-to('medium-landscape') {
+      //   margin-right: 10px;
+      // }
     }
 
     input[type="text"],
@@ -104,9 +120,11 @@
       background-color: #808a8c;
       height: 30px;
       width: 100%;
-      @include respond-to('medium-landscape') {
-        width: 380px;
-      }
+      padding: 0 5px;
+      color: #fff;
+      // @include respond-to('medium-landscape') {
+      //   width: 380px;
+      // }
     }
 
     textarea {
