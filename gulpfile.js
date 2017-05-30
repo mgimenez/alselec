@@ -185,19 +185,19 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('dist', function() {
-  runSequence('clean', 'sass', 'hintJs', 'copyJs', 'copyVendor', 'copyPHP', 'pugTemplates', 'pug','imagemin', function() {
+  runSequence('clean', 'sass', 'hintJs', 'copyJs', 'copyVendor', 'copyPHP', 'pug','imagemin', function() {
     console.log(color('SUCCESSFULLY DIST!', 'YELLOW'));
   });
 });
 
 gulp.task('dev', function(callback) {
-  runSequence('clean', 'sass', 'hintJs', 'copyJs', 'copyVendor', 'copyPHP', 'pugTemplates', 'pug', 'imagemin', 'watch', 'browser-sync', function() {
+  runSequence('clean', 'sass', 'hintJs', 'copyJs', 'copyVendor', 'copyPHP', 'pug', 'imagemin', 'watch', 'browser-sync', function() {
     console.log(color('HAPPY DEV!', 'BLUE'));
   });
 });
 
 gulp.task('build', function(callback) {
-  runSequence('clean', 'sass', 'hintJs', 'pugTemplates', 'pug', 'copyPHP', 'concatJs', 'uglifyJs', 'imagemin', 'mergeScript', 'copyVendor', function() {
+  runSequence('clean', 'sass', 'hintJs', 'pug', 'copyPHP', 'concatJs', 'uglifyJs', 'imagemin', 'mergeScript', 'copyVendor', function() {
     console.log(color('SUCCESSFULLY BUILD!', 'YELLOW'));
   });
 });

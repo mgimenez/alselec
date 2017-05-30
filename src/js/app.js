@@ -1,3 +1,26 @@
+/**
+ * Touchtap
+ */
+(function(win, doc, $){
+    'use strict';
+
+    var touchStartPos,
+        distance;
+
+    $(doc).on("touchstart", function (e) {
+        touchStartPos = $(win).scrollTop();
+    }).on("touchend", function (e) {
+        distance = touchStartPos - $(win).scrollTop();
+        if (distance < 20 && distance > -20) {
+            $(e.target).trigger('touchtap');
+        }
+    });
+
+})(window, window.document, window.jQuery);
+
+/**
+ * App
+ */
 (function(win, doc, $) {
 	'use strict';
 
@@ -15,7 +38,7 @@
 			touchDetect.init();
 			uncover.init();
 			contact.init();
-			ga.init();
+			tracking.init();
 		}
 
 	},
@@ -214,13 +237,16 @@
 
 	},
 
-  ga = {
+  tracking = {
 
     init: function() {
-      /*/GA tracking pdfs /*/
-      $('.btn-download, .btn-linkedin, .cert').on('click',function(){
-      	var url = $(this).attr('href');
-      	ga('send', 'event', 'button', 'click', {'page': '/'+url});
+
+      $('.btn-download, .js-sub-menu-cert a').on('click',function(ev){
+      	ga('send', 'event', 'pdf', 'click - ' + this.href, this.href);
+      });
+
+      $('.btn-linkedin').on('click',function(){
+      	ga('send', 'event', 'linkedin', 'click');
       });
     }
 

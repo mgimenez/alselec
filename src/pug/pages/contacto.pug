@@ -14,8 +14,6 @@ html
       meta(name="Keywords" content="Alselec Systems, automatización, industria, control, iram, iso, seguridad, construccion")
       link(rel="favicon" type="application/atom+xml" title="Alselec Systems" href="images/favicon.ico")
       link(rel="icon" type="image/png" href="images/favicon.png")
-      link(rel="stylesheet", type="text/css", href="vendor/slick/slick.css")
-      link(rel="stylesheet", type="text/css", href="vendor/slick/slick-theme.css")
       link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato:300,400")
       link(rel="stylesheet", type="text/css", href="css/styles.css")
       <!--[if lt IE 9]>
@@ -29,10 +27,7 @@ html
       include ../views/footer.pug
 
       script(src="vendor/jquery-1.12.4.min.js")
-      script(src="vendor/runtime.js")
-      script(src="vendor/touchtap.js")
       script(src="vendor/slick/slick.min.js")
-      script(src="js/templates.js")
       <!-- build:js -->
       script(src="js/app.js")
       <!-- endbuild -->
@@ -43,4 +38,4 @@ html
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
         ga('create', 'UA-44448223-1', 'alselec.com');
-        ga('send', 'pageview');
+        ga('send', 'event', 'button', 'click', {'page': '/contact'});
